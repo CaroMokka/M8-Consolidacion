@@ -29,3 +29,15 @@ Requerimientos Generales
 - Listar todos los bootcamp con sus usuarios
 - Consultar un usuario por id incluyendo los bootcamp
 - Gestione adecuadamente el manejo de errores
+
+
+- POST   - /api/signup        
+- POST   - /api/signin        
+- GET    - /api/user/:id      
+- GET    - /api/user          
+- PUT    - /api/user/:id     
+- DELETE - /api/user/:id      
+- POST   - /api/bootcamp      
+- POST   - /api/bootcamp/:id  
+- GET    - /api/bootcamp/:id  
+- GET    - /api/bootcamp  

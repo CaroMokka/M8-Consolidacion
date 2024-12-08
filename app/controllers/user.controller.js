@@ -10,7 +10,8 @@ exports.createUser = (user) => {
   return User.create({
       firstName: user.firstName,
       lastName: user.lastName,
-      email: user.email
+      email: user.email,
+      password: user.password
     })
     .then(user => {
       console.log(`>> Se ha creado el usuario: ${JSON.stringify(user, null, 4)}`)
