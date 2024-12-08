@@ -1,10 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const userController = require('../controllers/user.controller.js')
 
-//Rutas para usuario
-router.post('/api/signup', (req, res) => {
-    //.send('Crear un usuario');
-    console.log('Crear un usuario')
-})
+//Rutas para usuarios
+router.post('/signup', userController.createUser)
 
 module.exports = router;
