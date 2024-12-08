@@ -2,24 +2,36 @@ const {
   users
 } = require('../models')
 const db = require('../models')
+const bcrypt = require('bcrypt');
 const User = db.users
 const Bootcamp = db.bootcamps
 
 // Crear y Guardar Usuarios
 exports.createUser = (req, res) => {
-  console.log("Obj petición", req.body)
-  // return User.create({
-  //     firstName: user.firstName,
-  //     lastName: user.lastName,
-  //     email: user.email
-  //   })
-  //   .then(user => {
-  //     console.log(`>> Se ha creado el usuario: ${JSON.stringify(user, null, 4)}`)
-  //     return user
-  //   })
-  //   .catch(err => {
-  //     console.log(`>> Error al crear el usuario ${err}`)
-  //   })
+  const saltRounds = 10;
+  console.log(req.body)
+  if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password){
+    return res.status(400).json({ message: "Los campos son requeridos y no vacíos" })
+  }
+  const user = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: bcrypt.hashSync(req.body.password, saltRounds)
+  }
+  return User.create({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password
+    })
+    .then(user => {
+      console.log(`>> Se ha creado el usuario: ${JSON.stringify(user, null, 4)}`)
+      return res.status(200).json({ message: "El registro de usuario ha sido exitoso", user })
+    })
+    .catch(err => {
+      console.log(`>> Error al crear el usuario ${err}`)
+    })
 }
 
 // obtener los bootcamp de un usuario
