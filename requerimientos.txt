@@ -1,4 +1,12 @@
 Requerimientos Generales
+* Para la construcción de la API debe contener los siguientes funcionalidades:
+- Un usuario de puede registrar en la API
+- Un usuario inicia sesión con el email y el password
+- Los registros se guardarán en la base de datos PostgreSQL
+- Una vez registrado el usuario usuario puede agregar bootcamp
+- Puede asignar usuarios a los bootcamp
+- La consulta de los bootcamp es pública
+
 * Routes API
 OK - POST   - /api/signup       -> Registro de un nuevo usuario, acceso público
 - POST   - /api/signin       -> Inicio de sesión en la API, acceso público
@@ -15,7 +23,7 @@ OK - POST   - /api/signup       -> Registro de un nuevo usuario, acceso público
                                 Acceso por medio de token, previamente iniciado sesión
 - GET    - /api/bootcamp     -> Lista todos los bootcamp, acceso público
 
-* Consultas de Postman:
+* Consultas de Postman: PUNTO 9
 OK - Crear usuarios
 - Crear Bootcamps
 - Agregar usuarios a Bootcamps
