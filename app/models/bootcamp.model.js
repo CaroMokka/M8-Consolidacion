@@ -1,5 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Bootcamp = sequelize.define('bootcamp', {
+    id: {
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
     title: {
       type: DataTypes.STRING,
       validate: {

@@ -2,6 +2,7 @@ const db = require("./app/models");
 const express = require("express");
 //Importación de rutas
 const userRoutes = require("./app/routes/user.routes.js");
+const bootcampRoutes = require("./app/routes/bootcamp.routes.js")
 
 const app = express();
 
@@ -11,6 +12,7 @@ const run = async () => {
 
   //Montaje de rutas
   app.use("/api/", userRoutes);
+  app.use("/api/", bootcampRoutes)
 
   // Crear un Usuario
   // const user1 = await userController.createUser({

@@ -7,7 +7,15 @@ const Bootcamp = db.bootcamps
 const User = db.users
 
 // Crear y guardar un nuevo bootcamp
-exports.createBootcamp = (bootcamp) => {
+exports.createBootcamp = (req, res) => {
+  if(!req.body.title || !req.body.cue || !req.body.description){
+    return res.status(400).json({ message: "Los campos son requeridos y no vacíos" })
+  }
+  const bootcamp = {
+    title: req.body.title,
+    cue: req.body.cue,
+    description: req.body.description
+  }
   return Bootcamp.create({
       title: bootcamp.title,
       cue: bootcamp.cue,
@@ -15,7 +23,7 @@ exports.createBootcamp = (bootcamp) => {
     })
     .then(bootcamp => {
       console.log(`>> Creado el bootcamp: ${JSON.stringify(bootcamp, null, 4)}`)
-      return bootcamp
+      return res.status(200).json({ message: "El registro de bootcamp ha sido exitoso", bootcamp })
     })
     .catch(err => {
       console.log(`>> Error al crear el bootcamp: ${err}`)

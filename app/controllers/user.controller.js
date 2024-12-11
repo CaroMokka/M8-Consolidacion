@@ -9,7 +9,6 @@ const Bootcamp = db.bootcamps
 // Crear y Guardar Usuarios
 exports.createUser = (req, res) => {
   const saltRounds = 10;
-  console.log(req.body)
   if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password){
     return res.status(400).json({ message: "Los campos son requeridos y no vacíos" })
   }

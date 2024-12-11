@@ -1,1 +1,0 @@
-//funcion de verificación de token verifyToken()

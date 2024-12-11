@@ -1,6 +1,6 @@
 Requerimientos Generales
 * Para la construcción de la API debe contener los siguientes funcionalidades:
-- Un usuario de puede registrar en la API
+OK - Un usuario de puede registrar en la API
 - Un usuario inicia sesión con el email y el password
 - Los registros se guardarán en la base de datos PostgreSQL
 - Una vez registrado el usuario usuario puede agregar bootcamp
@@ -8,6 +8,7 @@ Requerimientos Generales
 - La consulta de los bootcamp es pública
 
 * Routes API
+----- ROUTES USER ------
 OK - POST   - /api/signup       -> Registro de un nuevo usuario, acceso público
 - POST   - /api/signin       -> Inicio de sesión en la API, acceso público
 - GET    - /api/user/:id     -> Listar información del usuario según id, acceso por medio de token, previamente iniciando sesión
@@ -16,7 +17,9 @@ OK - POST   - /api/signup       -> Registro de un nuevo usuario, acceso público
 - PUT    - /api/user/:id     -> Actualiza los campos de firstName y lastName de un usuario según su id, acceso por medio de token, 
                                 previamente iniciado sesión
 - DELETE - /api/user/:id     -> Elimina el usuario según id, acceso por medio de token, previamente iniciado sesión
-- POST   - /api/bootcamp     -> Crea un bootcamp, acceso por medio de token, previamente iniciado sesión
+
+------ ROUTES BOOTCAMPS --------
+ SEMI/OK - POST   - /api/bootcamp     -> Crea un bootcamp, acceso por medio de token, previamente iniciado sesión
 - POST   - /api/bootcamp/:id -> Agrega usuarios previamente registrados al bootcamp, acceso por medio de token, previamente 
                                 iniciado sesión
 - GET    - /api/bootcamp/:id -> Obtiene información de un bootcamp según id, y muestra los usuarios registrados en el bootcamp.
@@ -25,7 +28,7 @@ OK - POST   - /api/signup       -> Registro de un nuevo usuario, acceso público
 
 * Consultas de Postman: PUNTO 9
 OK - Crear usuarios
-- Crear Bootcamps
+OK - Crear Bootcamps
 - Agregar usuarios a Bootcamps
 - Iniciar sesión de usuario -> email y contraseña 
 - Iniciar sesión de usuario ya registrado -> email y contraseña
