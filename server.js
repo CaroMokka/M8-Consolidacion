@@ -96,7 +96,7 @@ const run = async () => {
 // Sincronizar base de datos y luego iniciar el servidor
 db.sequelize
   .sync({
-    force: true,
+    alter: true,
   })
   .then(() => {
     console.log("Eliminando y resincronizando la base de datos.");

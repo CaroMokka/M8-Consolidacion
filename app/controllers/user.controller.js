@@ -3,6 +3,9 @@ const {
 } = require('../models')
 const db = require('../models')
 const bcrypt = require('bcrypt');
+const { jwt } = require('jsonwebtoken')
+const { secretKey } = require('../config/auth.config.js')
+const { verifyToken } = require('../middleware/auth.js')
 const User = db.users
 const Bootcamp = db.bootcamps
 
@@ -31,6 +34,17 @@ exports.createUser = (req, res) => {
     .catch(err => {
       console.log(`>> Error al crear el usuario ${err}`)
     })
+}
+
+//Login de usuario
+exports.signinUser = async (req, res) => {
+  const user = await verifyToken(req.body)
+  console.log("User", user)
+  if(!user){
+    return res.status(401).json({ message: "Autentificación fallida." });
+  }
+  // const decodedToken = jwt.sign(user, secretKey)
+  res.json({ message: "Inicio de sesión exitosa.", data: user });
 }
 
 // obtener los bootcamp de un usuario
