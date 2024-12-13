@@ -36,15 +36,15 @@ exports.createUser = (req, res) => {
     })
 }
 
-//Login de usuario
+//Login de usuarios
 exports.signinUser = async (req, res) => {
   const user = await verifyToken(req.body)
-  console.log("User", user)
-  if(!user){
-    return res.status(401).json({ message: "Autentificación fallida." });
+  if(!user.data){
+    return res.status(user.code).json({ message: user.message });
   }
+ 
   // const decodedToken = jwt.sign(user, secretKey)
-  res.json({ message: "Inicio de sesión exitosa.", data: user });
+  return res.status(user.code).json({ data: user });
 }
 
 // obtener los bootcamp de un usuario
