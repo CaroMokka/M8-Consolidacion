@@ -22,20 +22,6 @@ const verifyToken = async (obj) => {
   } catch (err) {
     console.log(err);
   }
-
-  // try{
-  //     return User.findOne({
-  //         where: {
-  //           email: obj.email,
-  //           password: obj.password
-  //         }
-  //     }).then( user => {return user.dataValues[0]})
-  //     .catch(err => {
-  //         console.log(`>> Error mientras se encontraba el usuario: ${err}`)
-  //       })
-  // } catch(err) {
-  //     console.log(err.message)
-  // }
 };
 
 module.exports = { verifyToken };

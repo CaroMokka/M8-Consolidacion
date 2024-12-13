@@ -3,8 +3,8 @@ const {
 } = require('../models')
 const db = require('../models')
 const bcrypt = require('bcrypt');
-const { jwt } = require('jsonwebtoken')
-const { secretKey } = require('../config/auth.config.js')
+const jwt = require('jsonwebtoken')
+const secretKey  = require('../config/auth.config.js')
 const { verifyToken } = require('../middleware/auth.js')
 const User = db.users
 const Bootcamp = db.bootcamps
@@ -42,9 +42,8 @@ exports.signinUser = async (req, res) => {
   if(!user.data){
     return res.status(user.code).json({ message: user.message });
   }
- 
-  // const decodedToken = jwt.sign(user, secretKey)
-  return res.status(user.code).json({ data: user });
+  const decodedToken = jwt.sign(user, secretKey)
+  return res.status(user.code).json({ data: decodedToken });
 }
 
 // obtener los bootcamp de un usuario
