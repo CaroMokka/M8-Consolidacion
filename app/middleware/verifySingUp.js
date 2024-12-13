@@ -1,1 +1,0 @@
-//Verificación de correo, para saber si ya se encuentra ingresado al momento de de registrarse un nuevo usuario

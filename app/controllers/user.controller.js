@@ -5,7 +5,7 @@ const db = require('../models')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const secretKey  = require('../config/auth.config.js')
-const { verifyToken } = require('../middleware/auth.js')
+const { verifySignUp } = require('../middleware/verifySignUp.js')
 const User = db.users
 const Bootcamp = db.bootcamps
 
@@ -38,7 +38,7 @@ exports.createUser = (req, res) => {
 
 //Login de usuarios
 exports.signinUser = async (req, res) => {
-  const user = await verifyToken(req.body)
+  const user = await verifySignUp(req.body)
   if(!user.data){
     return res.status(user.code).json({ message: user.message });
   }

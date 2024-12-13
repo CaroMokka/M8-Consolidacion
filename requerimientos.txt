@@ -1,7 +1,7 @@
 Requerimientos Generales
 * Para la construcción de la API debe contener los siguientes funcionalidades:
 OK - Un usuario de puede registrar en la API
-- Un usuario inicia sesión con el email y el password
+OK - Un usuario inicia sesión con el email y el password
 - Los registros se guardarán en la base de datos PostgreSQL
 - Una vez registrado el usuario usuario puede agregar bootcamp
 - Puede asignar usuarios a los bootcamp
@@ -10,7 +10,7 @@ OK - Un usuario de puede registrar en la API
 * Routes API
 ----- ROUTES USER ------
 OK - POST   - /api/signup    -> Registro de un nuevo usuario, acceso público
-- POST   - /api/signin       -> Inicio de sesión en la API, acceso público
+OK - POST   - /api/signin       -> Inicio de sesión en la API, acceso público
 - GET    - /api/user/:id     -> Listar información del usuario según id, acceso por medio de token, previamente iniciando sesión
 - GET    - /api/user         -> Lista información de todos los usuarios y los Bootcamp registrados, acceso por medio de 
                                 token, previamente iniciado sesión 
@@ -31,7 +31,7 @@ OK - Crear usuarios
 OK - Crear Bootcamps
 - Agregar usuarios a Bootcamps
 OK - Iniciar sesión de usuario -> email y contraseña 
-- Iniciar sesión de usuario ya registrado -> email y contraseña
+Ok - Iniciar sesión de usuario ya registrado -> email y contraseña
 - Listar todos los usuarios con sus Bootcamps
 - Listar el usuario con el ID 3
 - Actualizar el usuario según su id, por ejemplo actualizar el usuario con id=1 por Pedro Sánchez

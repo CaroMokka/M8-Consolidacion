@@ -3,31 +3,36 @@ const {
   bootcamps
 } = require('../models')
 const db = require('../models')
+const secretKey = require('../config/auth.config.js')
+const { verifyToken } = require('../middleware/auth.js')
 const Bootcamp = db.bootcamps
 const User = db.users
 
 // Crear y guardar un nuevo bootcamp
 exports.createBootcamp = (req, res) => {
-  if(!req.body.title || !req.body.cue || !req.body.description){
-    return res.status(400).json({ message: "Los campos son requeridos y no vacíos" })
+  const { title, cue, description } = req.body
+  if(!title || !cue || !description){
+    return { message: "Los campos son requeridos y no vacíos", code: 400}
   }
-  const bootcamp = {
-    title: req.body.title,
-    cue: req.body.cue,
-    description: req.body.description
+  const codedtoken = req.headers.authorization
+  const tokenValid = verifyToken(codedtoken, secretKey)
+  console.log("token valido",tokenValid)
+
+  if(!tokenValid.data){
+   res.status(tokenValid.code).json({ data: tokenValid })
   }
   return Bootcamp.create({
-      title: bootcamp.title,
-      cue: bootcamp.cue,
-      description: bootcamp.description,
-    })
-    .then(bootcamp => {
-      console.log(`>> Creado el bootcamp: ${JSON.stringify(bootcamp, null, 4)}`)
-      return res.status(200).json({ message: "El registro de bootcamp ha sido exitoso", bootcamp })
-    })
-    .catch(err => {
-      console.log(`>> Error al crear el bootcamp: ${err}`)
-    })
+    title: title,
+    cue: cue,
+    description: description,
+  })
+  .then(bootcamp => {
+    console.log(`>> Creado el bootcamp: ${JSON.stringify(bootcamp, null, 4)}`)
+    res.status(200).json({ message: "El registro de bootcamp ha sido exitoso", bootcamp })
+  })
+  .catch(err => {
+    console.log(`>> Error al crear el bootcamp: ${err}`)
+  })
 }
 
 // Agregar un Usuario al Bootcamp
