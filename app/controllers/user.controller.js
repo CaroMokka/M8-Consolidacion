@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const secretKey = require("../config/auth.config.js");
 const { verifySignUp } = require("../middleware/verifySignUp.js");
 const { verifyToken } = require("../middleware/auth");
+const privateKey = require("../config/auth.config.js");
 const User = db.users;
 const Bootcamp = db.bootcamps;
 
@@ -57,7 +58,7 @@ exports.signinUser = async (req, res) => {
 };
 
 // obtener los bootcamp de un usuario
-exports.findUserById = async (req, res) => {
+exports.findUserByIdWithBootcamps = async (req, res) => {
   try {
     const { id } = req.params;
     const token = req.headers.authorization;
@@ -101,7 +102,12 @@ exports.findUserById = async (req, res) => {
 };
 
 // obtener todos los Usuarios incluyendo los bootcamp
-exports.findAll = () => {
+exports.findAll = async (req, res) => {
+  const token = req.headers.authorization
+  const isToken = await verifyToken(token, secretKey)
+  if(!isToken.data){
+    return res.status(isToken.code).json({ message: isToken.message })
+  }
   return User.findAll({
     include: [
       {
@@ -113,9 +119,13 @@ exports.findAll = () => {
         },
       },
     ],
+    attributes: {
+      exclude: ["createdAt", "updatedAt", "password"],
+    }
   }).then((users) => {
-    return users;
-  });
+    return res.status(200).json({ message: "Lista de usuarios registrados con sus respectivos bootcamps", data: users })
+  })
+  .catch((err)=>{return err.message})
 };
 
 // Actualizar usuarios
