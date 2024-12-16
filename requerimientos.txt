@@ -11,7 +11,7 @@ OK - Los registros se guardarán en la base de datos PostgreSQL
 ----- ROUTES USER ------
 OK - POST   - /api/signup    -> Registro de un nuevo usuario, acceso público
 OK - POST   - /api/signin       -> Inicio de sesión en la API, acceso público
-- GET    - /api/user/:id     -> Listar información del usuario según id, acceso por medio de token, previamente iniciando sesión
+***- GET    - /api/user/:id     -> Listar información del usuario según id, acceso por medio de token, previamente iniciando sesión
 - GET    - /api/user         -> Lista información de todos los usuarios y los Bootcamp registrados, acceso por medio de 
                                 token, previamente iniciado sesión 
 - PUT    - /api/user/:id     -> Actualiza los campos de firstName y lastName de un usuario según su id, acceso por medio de token, 
@@ -27,18 +27,18 @@ OK - GET    - /api/bootcamp/:id -> Obtiene información de un bootcamp según id
 OK - GET    - /api/bootcamp     -> Lista todos los bootcamp, acceso público
 
 * Consultas de Postman: PUNTO 9
-OK - Crear usuarios
-OK - Crear Bootcamps
-OK - Agregar usuarios a Bootcamps
-OK - Iniciar sesión de usuario -> email y contraseña 
-Ok - Iniciar sesión de usuario ya registrado -> email y contraseña
-- Listar todos los usuarios con sus Bootcamps
-- Listar el usuario con el ID 3
-- Actualizar el usuario según su id, por ejemplo actualizar el usuario con id=1 por Pedro Sánchez
-- Eliminar un usuario por id, por ejemplo el usuario con id=1
-- Consultando el bootcamp por id, incluyendo los usuarios registrados
-- Listar todos los bootcamp con sus usuarios
-- Consultar un usuario por id incluyendo los bootcamp
+OK - Crear usuarios (POST)
+OK - Crear Bootcamps (POST)
+OK - Agregar usuarios a Bootcamps (POST)
+OK - Iniciar sesión de usuario -> email y contraseña (POST)
+Ok - Iniciar sesión de usuario ya registrado -> email y contraseña (POST)
+- Listar todos los usuarios con sus Bootcamps (GET)
+- Listar el usuario con el ID 3 (GET)
+- Actualizar el usuario según su id, por ejemplo actualizar el usuario con id=1 por Pedro Sánchez (UPDATE)
+- Eliminar un usuario por id, por ejemplo el usuario con id=1 (DELETE)
+OK - Consultando el bootcamp por id, incluyendo los usuarios registrados (GET)
+- Listar todos los bootcamp con sus usuarios (GET)
+OK - Consultar un usuario por id incluyendo los bootcamp (GET)
 - Gestione adecuadamente el manejo de errores
 
 
