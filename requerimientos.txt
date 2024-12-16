@@ -2,7 +2,7 @@ Requerimientos Generales
 * Para la construcción de la API debe contener los siguientes funcionalidades:
 OK - Un usuario de puede registrar en la API
 OK - Un usuario inicia sesión con el email y el password
-- Los registros se guardarán en la base de datos PostgreSQL
+OK - Los registros se guardarán en la base de datos PostgreSQL
 - Una vez registrado el usuario usuario puede agregar bootcamp
 - Puede asignar usuarios a los bootcamp
 - La consulta de los bootcamp es pública
@@ -19,17 +19,17 @@ OK - POST   - /api/signin       -> Inicio de sesión en la API, acceso público
 - DELETE - /api/user/:id     -> Elimina el usuario según id, acceso por medio de token, previamente iniciado sesión
 
 ------ ROUTES BOOTCAMPS --------
- SEMI/OK - POST   - /api/bootcamp     -> Crea un bootcamp, acceso por medio de token, previamente iniciado sesión
-- POST   - /api/bootcamp/:id -> Agrega usuarios previamente registrados al bootcamp, acceso por medio de token, previamente 
+OK - POST   - /api/bootcamp     -> Crea un bootcamp, acceso por medio de token, previamente iniciado sesión
+OK - POST   - /api/bootcamp/:id -> Agrega usuarios previamente registrados al bootcamp, acceso por medio de token, previamente 
                                 iniciado sesión
-- GET    - /api/bootcamp/:id -> Obtiene información de un bootcamp según id, y muestra los usuarios registrados en el bootcamp.
+OK - GET    - /api/bootcamp/:id -> Obtiene información de un bootcamp según id, y muestra los usuarios registrados en el bootcamp.
                                 Acceso por medio de token, previamente iniciado sesión
-- GET    - /api/bootcamp     -> Lista todos los bootcamp, acceso público
+OK - GET    - /api/bootcamp     -> Lista todos los bootcamp, acceso público
 
 * Consultas de Postman: PUNTO 9
 OK - Crear usuarios
 OK - Crear Bootcamps
-- Agregar usuarios a Bootcamps
+OK - Agregar usuarios a Bootcamps
 OK - Iniciar sesión de usuario -> email y contraseña 
 Ok - Iniciar sesión de usuario ya registrado -> email y contraseña
 - Listar todos los usuarios con sus Bootcamps
@@ -42,13 +42,13 @@ Ok - Iniciar sesión de usuario ya registrado -> email y contraseña
 - Gestione adecuadamente el manejo de errores
 
 
-- POST   - /api/signup        
-- POST   - /api/signin        
+OK - POST   - /api/signup        
+OK - POST   - /api/signin        
 - GET    - /api/user/:id      
 - GET    - /api/user          
 - PUT    - /api/user/:id     
 - DELETE - /api/user/:id      
-- POST   - /api/bootcamp      
-- POST   - /api/bootcamp/:id  
+OK - POST   - /api/bootcamp      
+OK - POST   - /api/bootcamp/:id  
 - GET    - /api/bootcamp/:id  
 - GET    - /api/bootcamp  

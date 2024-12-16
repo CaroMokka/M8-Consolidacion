@@ -29,7 +29,7 @@ exports.createUser = (req, res) => {
     })
     .then(user => {
       console.log(`>> Se ha creado el usuario: ${JSON.stringify(user, null, 4)}`)
-      return res.status(200).json({ message: "El registro de usuario ha sido exitoso", user })
+      return res.status(201).json({ message: "El registro de usuario ha sido exitoso", user })
     })
     .catch(err => {
       console.log(`>> Error al crear el usuario ${err}`)
