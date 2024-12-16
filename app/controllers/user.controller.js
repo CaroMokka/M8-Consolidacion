@@ -153,19 +153,27 @@ exports.updateUserById = (userId, fName, lName) => {
 };
 
 // Actualizar usuarios
-exports.deleteUserById = (userId) => {
-  return User.destroy({
-    where: {
-      id: userId,
-    },
-  })
-    .then((user) => {
-      console.log(
-        `>> Se ha eliminado el usuario: ${JSON.stringify(user, null, 4)}`
-      );
-      return user;
+exports.deleteUserById = async (req, res) => {
+  try{
+    const userId = req.params.id
+    const token = req.headers.authorization
+    const isToken = await verifyToken(token, secretKey)
+    if(!isToken.data){
+      return res.status(isToken.code).json({ message: isToken.message })
+    }
+    const userDeleted = await User.findByPk(userId, {
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "password"],
+      },
     })
-    .catch((err) => {
-      console.log(`>> Error mientras se eliminaba el usuario: ${err}`);
-    });
+    if(!userDeleted){
+      return res.status(404).json({ message: "Usuario no encontrado" })
+    }
+    await userDeleted.destroy()
+
+    res.status(200).json({ message: "Se ha eliminnado el usuario", data: userDeleted.dataValues })
+  }
+  catch(err){
+    console.log(`>> Error mientras se eliminaba el usuario: ${err}`)
+  }
 };

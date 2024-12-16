@@ -121,7 +121,15 @@ exports.findAll = () => {
 
 //Listar todos los bootcamps
 exports.findAllBootcamps = (req, res) => {
-  return Bootcamp.findAll()
+  return Bootcamp.findAll({
+    include: [
+      {
+        model: User,
+        as: "users",
+        attributes: [ "id", "firstName", "lastName" ]
+      }
+    ]
+  })
   .then((bootcamps) => { 
     res.json({ message: "Listado de bootcamps", data: bootcamps })
   })
