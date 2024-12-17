@@ -129,30 +129,34 @@ exports.findAll = async (req, res) => {
 };
 
 // Actualizar usuarios
-exports.updateUserById = (userId, fName, lName) => {
-  return User.update(
-    {
-      firstName: fName,
-      lastName: lName,
-    },
-    {
-      where: {
-        id: userId,
-      },
+exports.updateUserById = async (req, res) => {
+  try{
+    const { id } = req.params
+    const { firstName, lastName, email } = req.body
+    const token = req.headers.authorization
+    const isToken = await verifyToken(token, secretKey)
+    if(!isToken.data){
+      return res.status(isToken.code).json({ message: isToken.message })
     }
-  )
-    .then((user) => {
-      console.log(
-        `>> Se ha actualizado el usuario: ${JSON.stringify(user, null, 4)}`
-      );
-      return user;
+    const isUser = await User.findByPk(id, {
+      attributes: {
+        exclude: [ "createdAt", "updatedAt", "password"]
+      }
     })
-    .catch((err) => {
-      console.log(`>> Error mientras se actualizaba el usuario: ${err}`);
-    });
+
+    if(!isUser){
+        return res.status(404).json({ message: "Usuario no encontrado." })
+    }
+    await isUser.update({ firstName, lastName, email })
+    return res.status(200).json({ message: "Usuario actualizado correctamente.", data: isUser })
+  }
+  catch(err){
+    console.error('Error al actualizar el usuario:', err.message);
+    return res.status(500).json({ message: 'Error interno del servidor' });
+  }
 };
 
-// Actualizar usuarios
+// Eliminar usuarios
 exports.deleteUserById = async (req, res) => {
   try{
     const userId = req.params.id

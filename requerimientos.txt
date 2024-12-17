@@ -14,9 +14,9 @@ OK - POST   - /api/signin       -> Inicio de sesión en la API, acceso público
 OK - GET    - /api/user/:id     -> Listar información del usuario según id, acceso por medio de token, previamente iniciando sesión
 OK - GET    - /api/user         -> Lista información de todos los usuarios y los Bootcamp registrados, acceso por medio de 
                                 token, previamente iniciado sesión 
-- PUT    - /api/user/:id     -> Actualiza los campos de firstName y lastName de un usuario según su id, acceso por medio de token, 
+OK - PUT    - /api/user/:id     -> Actualiza los campos de firstName y lastName de un usuario según su id, acceso por medio de token, 
                                 previamente iniciado sesión
-- DELETE - /api/user/:id     -> Elimina el usuario según id, acceso por medio de token, previamente iniciado sesión
+OK - DELETE - /api/user/:id     -> Elimina el usuario según id, acceso por medio de token, previamente iniciado sesión
 
 ------ ROUTES BOOTCAMPS --------
 OK - POST   - /api/bootcamp     -> Crea un bootcamp, acceso por medio de token, previamente iniciado sesión
@@ -34,11 +34,11 @@ OK - Iniciar sesión de usuario -> email y contraseña (POST)
 Ok - Iniciar sesión de usuario ya registrado -> email y contraseña (POST)
 OK - Listar todos los usuarios con sus Bootcamps (GET)
 OK - Listar el usuario con el ID 3 (GET)
-- Actualizar el usuario según su id, por ejemplo actualizar el usuario con id=1 por Pedro Sánchez (UPDATE)
-- Eliminar un usuario por id, por ejemplo el usuario con id=1 (DELETE)
+OK - Actualizar el usuario según su id, por ejemplo actualizar el usuario con id=1 por Pedro Sánchez (UPDATE)
+OK - Eliminar un usuario por id, por ejemplo el usuario con id=1 (DELETE)
 OK - Consultando el bootcamp por id, incluyendo los usuarios registrados (GET)
 OK - Listar todos los bootcamp con sus usuarios (GET)
 OK - Consultar un usuario por id incluyendo los bootcamp (GET)
-- Gestione adecuadamente el manejo de errores
+OK - Gestione adecuadamente el manejo de errores
 
 

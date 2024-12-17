@@ -8,6 +8,7 @@ router.post('/signin', userController.signinUser)
 router.get('/user', userController.findAll)
 router.get('/user/:id', userController.findUserByIdWithBootcamps)
 router.delete('/user/:id', userController.deleteUserById)
+router.put('/user/:id', userController.updateUserById)
 
 
 module.exports = router;
